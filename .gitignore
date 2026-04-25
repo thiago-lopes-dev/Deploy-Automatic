@@ -1,0 +1,28 @@
+# Logs
+*.log
+deploy.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# SSH Keys (NUNCA SUBIR)
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# Docker
+.dockerignore
+.env
+.env.production
+.env.staging
+
+# Backups
+backups/
+*.tar
+*.gz
+
+# IDEs
+.vscode/
+.idea/

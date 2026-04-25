@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    image: ${DEPLOY_IMAGE:-app-sistema:staging}
+    container_name: app-staging
+    restart: on-failure
+    environment:
+      - NODE_ENV=staging
+      - DB_HOST=db-staging
+      - DB_USER=${DB_USER:-staging_user}
+      - DB_PASSWORD=${DB_PASSWORD:-staging_pass}
+      - DB_NAME=${DB_NAME:-staging_db}
+    depends_on:
+      - db-staging
+    networks:
+      - staging-network
+
+  db-staging:
+    image: postgres:15-alpine
+    container_name: db-staging
+    environment:
+      - POSTGRES_USER=${DB_USER:-staging_user}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-staging_pass}
+      - POSTGRES_DB=${DB_NAME:-staging_db}
+    networks:
+      - staging-network
+
+networks:
+  staging-network:
+    driver: bridge

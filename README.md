@@ -50,6 +50,16 @@ GitHub Push (main/staging)
 └── Dockerfile                      # Multi-stage build otimizado
 ```
 
+## 🛠️ Gerenciamento com Makefile
+
+Para facilitar a operação, adicionei um `Makefile` com comandos atalho:
+
+```bash
+make build          # Constrói a imagem localmente
+make up             # Sobe o ambiente de produção
+make logs           # Acompanha os logs da aplicação
+make deploy-check   # Validação pré-deploy
+```
 ---
 
 ## ⚙️ Configuração
